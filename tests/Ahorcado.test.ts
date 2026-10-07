@@ -11,4 +11,9 @@ describe("Ahorcado", () => {
     const juego = new Ahorcado("GATO");
     expect(juego.vidas()).toBe(6);
   });
+
+  it("la palabra oculta tiene un guion por letra", () => {
+    const juego = new Ahorcado("ALA");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _");
+  });
 });
