@@ -2,7 +2,7 @@ export class Ahorcado {
   constructor(private palabra: string) {}
 
   palabraEnmascarada(): string {
-    return "_ _ _ _";
+    return this.palabra.split("").map(() => "_").join(" ");
   }
 
   vidas(): number {
