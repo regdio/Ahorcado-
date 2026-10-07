@@ -1,0 +1,21 @@
+{
+  "name": "Ahorcado-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest",
+    "at": "bddgen && playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "playwright-bdd": "^9.2.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^2.1.0"
+  }
+}
