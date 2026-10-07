@@ -1,3 +1,4 @@
+const VIDAS_INICIALES = 6;
 export class Ahorcado {
   constructor(private palabra: string) {}
 
@@ -6,6 +7,6 @@ export class Ahorcado {
   }
 
   vidas(): number {
-    return 6;
+    return VIDAS_INICIALES;
   }
 }
