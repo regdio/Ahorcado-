@@ -14,4 +14,4 @@ Como jugador, quiero iniciar una nueva partida para empezar a jugar.
     - inicializa con la palabra oculta
     - arranca con 6 vidas
     - la palabra oculta tiene un guion por letra
-  - Estado: en progreso
+  - Estado: Done
