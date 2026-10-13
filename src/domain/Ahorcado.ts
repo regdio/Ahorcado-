@@ -1,17 +1,19 @@
 const VIDAS_INICIALES = 6;
+
 export class Ahorcado {
-  private adivinoLetra = false;
+  private letrasAdivinadas: string[] = [];
+
   constructor(private palabra: string) {}
 
   adivinar(letra: string): void {
-    this.adivinoLetra = true;
+    this.letrasAdivinadas.push(letra);
   }
 
   palabraEnmascarada(): string {
-    if (this.adivinoLetra) {
-      return "_ A _ _";
-    }
-    return this.palabra.split("").map(() => "_").join(" ");
+    return this.palabra
+      .split("")
+      .map((l) => (this.letrasAdivinadas.includes(l) ? l : "_"))
+      .join(" ");
   }
 
   vidas(): number {
