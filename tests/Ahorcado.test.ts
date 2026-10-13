@@ -17,3 +17,12 @@ describe("Ahorcado", () => {
     expect(juego.palabraEnmascarada()).toBe("_ _ _");
   });
 });
+
+
+describe("HU-03 adivinar letras", () => {
+  it("adivinar una letra presente la revela", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("A");
+    expect(juego.palabraEnmascarada()).toBe("_ A _ _");
+  });
+});
