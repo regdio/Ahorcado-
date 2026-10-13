@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
-    "at": "bddgen && playwright test"
+    "at": "bddgen && playwright test",
+    "build": "vite build",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
+    "@vitest/coverage-v8": "^2.1.0",
     "playwright-bdd": "^9.2.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.1",
