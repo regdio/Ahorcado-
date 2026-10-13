@@ -17,3 +17,14 @@ Como jugador, quiero iniciar una nueva partida para empezar a jugar.
   - Estado: Done
   
   - Nota: el commit `REFACTOR: HU-01 extraer constante` incluyó por error el cableado de la UI (`index.ts`, `main.ts`), que correspondía al `GREEN:` del AT. Lo dejamos en el historial y lo corregimos en el proceso: un refactor no agrega código.
+
+
+### HU-03 — Adivinar letras
+Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
+
+- CA-1: Si la letra está en la palabra, se revelan todas sus ocurrencias y no se pierden vidas.
+  - AT: `features/adivinar-letras.feature` (@HU-03 @CA-1)
+  - UTs:
+    - adivinar una letra presente la revela
+    - revela todas las ocurrencias
+  - Estado: en progreso
