@@ -15,3 +15,5 @@ Como jugador, quiero iniciar una nueva partida para empezar a jugar.
     - arranca con 6 vidas
     - la palabra oculta tiene un guion por letra
   - Estado: Done
+  
+  - Nota: el commit `REFACTOR: HU-01 extraer constante` incluyó por error el cableado de la UI (`index.ts`, `main.ts`), que correspondía al `GREEN:` del AT. Lo dejamos en el historial y lo corregimos en el proceso: un refactor no agrega código.
