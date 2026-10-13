@@ -25,4 +25,10 @@ describe("HU-03 adivinar letras", () => {
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+
+    it("revela todas las ocurrencias", () => {
+    const juego = new Ahorcado("ALA");
+    juego.adivinar("A");
+    expect(juego.palabraEnmascarada()).toBe("A _ A");
+  });
 });
