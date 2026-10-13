@@ -30,3 +30,9 @@ jobs:
 
       - name: 3. Coverage (corta si src/domain baja del 90%)
         run: pnpm coverage
+      
+      - name: Instalar navegador para los AT
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: 5. Acceptance tests
+        run: pnpm at
