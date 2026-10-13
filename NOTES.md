@@ -27,4 +27,4 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
   - UTs:
     - adivinar una letra presente la revela
     - revela todas las ocurrencias
-  - Estado: en progreso
+  - Estado: CA-1 Done
