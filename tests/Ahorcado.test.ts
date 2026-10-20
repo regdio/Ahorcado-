@@ -49,6 +49,12 @@ describe("HU-05 contar errores", () => {
     juego.adivinar("E");
     expect(juego.vidas()).toBe(5);
   });
+  it("cada fallo descuenta una vida", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    juego.adivinar("I");
+    expect(juego.vidas()).toBe(4);
+  });
 });
 
 });
