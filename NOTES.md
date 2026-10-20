@@ -35,3 +35,13 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
     - adivinar en minúscula revela la letra
     - la palabra en minúscula también se revela
   - Estado: en progreso
+ 
+### HU-05 — Contar errores
+Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidades me quedan.
+
+- CA-1: Si la letra no está en la palabra, no se revela nada y las vidas bajan en 1.
+  - AT: `features/fallar-letra.feature` (@HU-05 @CA-1)
+  - UTs:
+    - fallar una letra descuenta una vida
+    - cada fallo descuenta una vida
+  - Estado: en progreso 
