@@ -36,4 +36,9 @@ describe("HU-03 adivinar letras", () => {
     juego.adivinar("a");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+  it("la palabra en minúscula también se revela", () => {
+    const juego = new Ahorcado("gato");
+    juego.adivinar("A");
+    expect(juego.palabraEnmascarada()).toBe("_ A _ _");
+  });
 });
