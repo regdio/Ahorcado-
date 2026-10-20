@@ -21,7 +21,7 @@ export class Ahorcado {
   }
 
   vidas(): number {
-    const huboFallo = this.letrasAdivinadas.some((l) => !this.palabra.includes(l));
-    return huboFallo ? VIDAS_INICIALES - 1 : VIDAS_INICIALES;
+    const fallos = this.letrasAdivinadas.filter((l) => !this.palabra.includes(l)).length;
+    return VIDAS_INICIALES - fallos;
   }
 }
