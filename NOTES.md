@@ -28,3 +28,10 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
     - adivinar una letra presente la revela
     - revela todas las ocurrencias
   - Estado: CA-1 Done
+
+- CA-2: No distingue mayúsculas de minúsculas (`a` = `A`).
+  - AT: `features/adivinar-letras.feature` (@HU-03 @CA-2)
+  - UTs:
+    - adivinar en minúscula revela la letra
+    - la palabra en minúscula también se revela
+  - Estado: en progreso
