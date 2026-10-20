@@ -41,4 +41,14 @@ describe("HU-03 adivinar letras", () => {
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+
+  
+describe("HU-05 contar errores", () => {
+  it("fallar una letra descuenta una vida", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    expect(juego.vidas()).toBe(5);
+  });
+});
+
 });
