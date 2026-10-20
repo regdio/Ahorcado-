@@ -6,7 +6,7 @@ export class Ahorcado {
   constructor(private palabra: string) {}
 
   adivinar(letra: string): void {
-    this.letrasAdivinadas.push(letra);
+    this.letrasAdivinadas.push(letra.toUpperCase());
   }
 
   palabraEnmascarada(): string {
