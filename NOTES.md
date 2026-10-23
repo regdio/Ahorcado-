@@ -1,8 +1,14 @@
 # Ahorcado — Notas
 
-## Story Map
-Link:(https://docs.google.com/document/d/11kgPLtHq3AV14IZ7cBIxkqOzxiKo0OYSa1oxiUObCxQ/edit?tab=t.0#heading=h.l6yg4fw508jh)
+## Links de entrega
+- Repositorio: https://github.com/regdio/Ahorcado-
+- App en producción: https://regdio.github.io/Ahorcado-/
+- Pipeline (GitHub Actions): https://github.com/regdio/Ahorcado-/actions
+- Análisis estático (SonarQube Cloud): https://sonarcloud.io/dashboard?id=regdio_Ahorcado
+- Story Map: https://docs.google.com/document/d/11kgPLtHq3AV14IZ7cBIxkqOzxiKo0OYSa1oxiUObCxQ/edit?tab=t.0#heading=h.l6yg4fw508jh
 
+- AT roto a propósito (rama `prueba-ci`): https://github.com/regdio/Ahorcado-/actions/runs/38485807321
+- Quality gate de Sonar con un bug a propósito (rama `prueba-sonar`): https://github.com/regdio/Ahorcado-/actions/runs/39527447595
 ## Trazabilidad
 
 ### HU-01 — Iniciar partida
@@ -27,14 +33,14 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
   - UTs:
     - adivinar una letra presente la revela
     - revela todas las ocurrencias
-  - Estado: CA-1 Done
+  - Estado: Done
 
 - CA-2: No distingue mayúsculas de minúsculas (`a` = `A`).
   - AT: `features/adivinar-letras.feature` (@HU-03 @CA-2)
   - UTs:
     - adivinar en minúscula revela la letra
     - la palabra en minúscula también se revela
-  - Estado: en progreso
+  - Estado: Done
  
 ### HU-05 — Contar errores
 Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidades me quedan.
@@ -44,4 +50,14 @@ Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidade
   - UTs:
     - fallar una letra descuenta una vida
     - cada fallo descuenta una vida
-  - Estado: en progreso 
+  - Estado: Done 
+
+### HU-07 — Ganar la partida
+Como jugador, quiero saber cuándo gané al descubrir todas las letras para saber que terminé la partida con éxito.
+
+- CA-1: Al completar la palabra se muestra "GANASTE".
+  - AT: `features/ganar.feature` (@HU-07 @CA-1)
+  - UTs:
+    - gana al descubrir todas las letras
+    - no gana si faltan letras
+  - Estado: en progreso
