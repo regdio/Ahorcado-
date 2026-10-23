@@ -45,3 +45,14 @@ Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidade
     - fallar una letra descuenta una vida
     - cada fallo descuenta una vida
   - Estado: en progreso 
+
+
+### HU-07 — Ganar la partida
+Como jugador, quiero saber cuándo gané al descubrir todas las letras para saber que terminé la partida con éxito.
+
+- CA-1: Al completar la palabra se muestra "GANASTE".
+  - AT: `features/ganar.feature` (@HU-07 @CA-1)
+  - UTs:
+    - gana al descubrir todas las letras
+    - no gana si faltan letras
+  - Estado: en progreso
