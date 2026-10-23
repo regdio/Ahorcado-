@@ -24,4 +24,8 @@ export class Ahorcado {
     const fallos = this.letrasAdivinadas.filter((l) => !this.palabra.includes(l)).length;
     return VIDAS_INICIALES - fallos;
   }
+  
+  gano(): boolean {
+    return false;
+  }
 }
