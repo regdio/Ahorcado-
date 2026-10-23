@@ -26,6 +26,6 @@ export class Ahorcado {
   }
   
   gano(): boolean {
-    return false;
+    return true;
   }
 }
