@@ -71,6 +71,7 @@ describe("HU-07 ganar la partida", () => {
     juego.adivinar("G");
     expect(juego.gano()).toBe(false);
   });
+});
   
 describe("HU-08 perder la partida", () => {
   it("pierde al quedarse sin vidas", () => {
@@ -78,6 +79,11 @@ describe("HU-08 perder la partida", () => {
     ["B", "C", "D", "E", "F", "H"].forEach((l) => juego.adivinar(l));
     expect(juego.perdio()).toBe(true);
   });
-});
+  
+  it("no pierde si le quedan vidas", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    expect(juego.perdio()).toBe(false);
+  });
 });
 
