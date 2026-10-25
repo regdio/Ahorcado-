@@ -66,6 +66,11 @@ describe("HU-07 ganar la partida", () => {
     juego.adivinar("O");
     expect(juego.gano()).toBe(true);
   });
+    it("no gana si faltan letras", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    expect(juego.gano()).toBe(false);
+  });
 });
 
 });
