@@ -30,6 +30,6 @@ export class Ahorcado {
   }
   
   perdio(): boolean {
-    return true;
+    return this.vidas() <= 0;
   }
 }
