@@ -61,3 +61,18 @@ Como jugador, quiero saber cuándo gané al descubrir todas las letras para sabe
     - gana al descubrir todas las letras
     - no gana si faltan letras
   - Estado: Done
+
+
+### HU-08 — Perder la partida
+Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber qué palabra era.
+
+- CA-1: Al quedarme sin vidas se muestra "PERDISTE".
+- CA-2: Al perder se revela la palabra completa.
+  - AT: `features/perder.feature` (@HU-08 @CA-1 @CA-2)
+  - UTs:
+    - pierde al quedarse sin vidas
+    - no pierde si le quedan vidas
+    - al perder se revela la palabra
+  - Estado: en progreso
+- CA-3: Con la partida terminada no se pueden ingresar más letras.
+  - Estado: Pendiente
