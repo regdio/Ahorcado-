@@ -85,5 +85,11 @@ describe("HU-08 perder la partida", () => {
     juego.adivinar("E");
     expect(juego.perdio()).toBe(false);
   });
+
+  it("al perder se revela la palabra", () => {
+    const juego = new Ahorcado("GATO");
+    ["B", "C", "D", "E", "F", "H"].forEach((l) => juego.adivinar(l));
+    expect(juego.palabraEnmascarada()).toBe("G A T O");
+  });
 });
 
