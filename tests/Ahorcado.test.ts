@@ -57,4 +57,20 @@ describe("HU-05 contar errores", () => {
   });
 });
 
+describe("HU-07 ganar la partida", () => {
+  it("gana al descubrir todas las letras", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    juego.adivinar("A");
+    juego.adivinar("T");
+    juego.adivinar("O");
+    expect(juego.gano()).toBe(true);
+  });
+    it("no gana si faltan letras", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    expect(juego.gano()).toBe(false);
+  });
+});
+
 });

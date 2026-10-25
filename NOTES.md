@@ -60,4 +60,4 @@ Como jugador, quiero saber cuándo gané al descubrir todas las letras para sabe
   - UTs:
     - gana al descubrir todas las letras
     - no gana si faltan letras
-  - Estado: en progreso
+  - Estado: Done

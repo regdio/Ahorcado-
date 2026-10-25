@@ -5,15 +5,18 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
     <p data-testid="word"></p>
     <p>Vidas: <span data-testid="lives"></span></p>
     <input type="text" maxlength="1" aria-label="Letra" />
+    <p data-testid="message"></p>
   `;
 
   const palabra = root.querySelector<HTMLElement>('[data-testid="word"]')!;
   const vidas = root.querySelector<HTMLElement>('[data-testid="lives"]')!;
   const input = root.querySelector<HTMLInputElement>("input")!;
+  const mensaje = root.querySelector<HTMLElement>('[data-testid="message"]')!;
 
   function render(): void {
     palabra.textContent = juego.palabraEnmascarada();
     vidas.textContent = String(juego.vidas());
+    mensaje.textContent = juego.gano() ? "GANASTE" : "";
   }
 
   input.addEventListener("keydown", (e) => {
