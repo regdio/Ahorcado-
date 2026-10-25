@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { Ahorcado } from "../src/domain/Ahorcado";
 
-describe("Ahorcado", () => {
+describe("HU-01 iniciar partida", () => {
   it("inicializa con la palabra oculta", () => {
     const juego = new Ahorcado("GATO");
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
@@ -26,12 +26,12 @@ describe("HU-03 adivinar letras", () => {
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
 
-    it("revela todas las ocurrencias", () => {
+  it("revela todas las ocurrencias", () => {
     const juego = new Ahorcado("ALA");
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("A _ A");
   });
-    it("adivinar en minúscula revela la letra", () => {
+  it("adivinar en minúscula revela la letra", () => {
     const juego = new Ahorcado("GATO");
     juego.adivinar("a");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
@@ -41,8 +41,8 @@ describe("HU-03 adivinar letras", () => {
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+});
 
-  
 describe("HU-05 contar errores", () => {
   it("fallar una letra descuenta una vida", () => {
     const juego = new Ahorcado("GATO");
@@ -66,11 +66,10 @@ describe("HU-07 ganar la partida", () => {
     juego.adivinar("O");
     expect(juego.gano()).toBe(true);
   });
-    it("no gana si faltan letras", () => {
+  it("no gana si faltan letras", () => {
     const juego = new Ahorcado("GATO");
     juego.adivinar("G");
     expect(juego.gano()).toBe(false);
   });
 });
 
-});
