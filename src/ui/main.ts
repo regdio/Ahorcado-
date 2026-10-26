@@ -16,7 +16,13 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
   function render(): void {
     palabra.textContent = juego.palabraEnmascarada();
     vidas.textContent = String(juego.vidas());
-    mensaje.textContent = juego.gano() ? "GANASTE" : "";
+    if (juego.gano()) {
+      mensaje.textContent = "GANASTE";
+    } else if (juego.perdio()) {
+      mensaje.textContent = "PERDISTE";
+    } else {
+      mensaje.textContent = "";
+    }
   }
 
   input.addEventListener("keydown", (e) => {
