@@ -79,7 +79,11 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
     - al perder se revela la palabra
   - Estado: Done
 - CA-3: Con la partida terminada no se pueden ingresar más letras.
-  - Estado: Pendiente
+  - AT: `features/perder.feature` (@HU-08 @CA-3)
+  - UTs:
+    - no se puede adivinar después de ganar
+    - no se puede adivinar después de perder
+  - Estado: en progreso
 
 
 ## Notas del proceso

@@ -16,4 +16,17 @@ Característica: Perder la partida
     Y el jugador adivina la letra "H"
     Entonces se ve el mensaje "PERDISTE"
     Y se ve la palabra "G A T O"
-    Y se ven 0 vidas 
+    Y se ven 0 vidas
+  
+  @CA-3
+  Escenario: Después de perder no se puede seguir jugando
+    Dado una partida con la palabra "GATO"
+    Cuando el jugador adivina la letra "B"
+    Y el jugador adivina la letra "C"
+    Y el jugador adivina la letra "D"
+    Y el jugador adivina la letra "E"
+    Y el jugador adivina la letra "F"
+    Y el jugador adivina la letra "H"
+    Y el jugador adivina la letra "Z"
+    Entonces se ven 0 vidas
+    Y se ve el mensaje "PERDISTE" 
