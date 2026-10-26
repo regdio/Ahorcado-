@@ -48,6 +48,6 @@ export class Ahorcado {
   }
   
   terminada(): boolean {
-    return true;
+    return this.gano() || this.perdio();
   }
 }
