@@ -44,7 +44,12 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
   - Estado: Done
  
 - CA-3: Si se ingresa algo que no es una letra, se informa y no se pierden vidas.
-  - Estado: Pendiente
+  - AT: `features/adivinar-letras.feature` (@HU-03 @CA-3)
+  - UTs:
+    - un número no descuenta vidas
+    - un símbolo no descuenta vidas
+    - reconoce si la entrada no es una letra
+  - Estado: en progreso
 
 ### HU-05 — Contar errores
 Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidades me quedan.

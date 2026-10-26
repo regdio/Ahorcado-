@@ -17,3 +17,11 @@ Característica: Adivinar letras
     Dado una partida con la palabra "gato"
     Cuando el jugador adivina la letra "a"
     Entonces se ve la palabra "_ A _ _"
+
+
+  @CA-3
+  Escenario: Escribir algo que no es una letra no descuenta vidas
+    Dado una partida con la palabra "GATO"
+    Cuando el jugador adivina la letra "1"
+    Entonces se ven 6 vidas
+    Y se ve el mensaje "Ingresá una letra"
