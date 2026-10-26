@@ -57,5 +57,8 @@ export class Ahorcado {
 
   reiniciar(nuevaPalabra?: string): void {
     this.letrasAdivinadas = [];
+    if (nuevaPalabra !== undefined) {
+      this.palabra = nuevaPalabra.toUpperCase();
+    }
   }
 }
