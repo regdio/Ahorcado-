@@ -39,6 +39,11 @@ export class Ahorcado {
     return VIDAS_INICIALES - fallos;
   }
   
+  
+  errores(): number {
+    return 0;
+  }
+  
   gano(): boolean {
     return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));
   }

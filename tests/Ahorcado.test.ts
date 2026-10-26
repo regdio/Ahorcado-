@@ -150,3 +150,12 @@ describe("HU-09 jugar de nuevo", () => {
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
   });
 });
+
+
+describe("HU-06 dibujo progresivo", () => {
+  it("un error suma un error", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    expect(juego.errores()).toBe(1);
+  });
+});
