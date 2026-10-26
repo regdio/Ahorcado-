@@ -52,5 +52,7 @@ export class Ahorcado {
   }
 
   
-  reiniciar(): void {}
+  reiniciar(): void {
+    this.letrasAdivinadas = [];
+  }
 }
