@@ -28,3 +28,7 @@ Then("se ven {int} vidas", async ({ page }, vidas: number) => {
 Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
   await expect(page.getByTestId("message")).toHaveText(mensaje);
 });
+
+Then("se ven {int} partes del ahorcado", async ({ page }, partes: number) => {
+  await expect(page.locator('[data-testid="parte"]:visible')).toHaveCount(partes);
+});

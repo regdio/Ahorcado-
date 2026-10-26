@@ -102,6 +102,17 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
     - reiniciar vuelve a empezar la partida
   - Estado: Done
 
+
+### HU-06 — Dibujo progresivo del ahorcado (extra)
+Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
+
+- CA-1: Con cada error se muestra una parte más del muñeco (de 0 a 6).
+  - AT: `features/dibujo.feature` (@HU-06 @CA-1)
+  - UTs:
+    - un error suma un error
+    - cuenta cada error
+  - Estado: en progreso
+
 ## Notas del proceso
 - El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
