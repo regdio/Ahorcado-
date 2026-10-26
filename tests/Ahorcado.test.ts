@@ -201,4 +201,10 @@ describe("HU-18 acentos", () => {
     ["C", "A", "M", "I", "O", "N"].forEach((l) => juego.adivinar(l));
     expect(juego.gano()).toBe(true);
   });
+  
+  it("escribir una vocal con tilde cuenta como la vocal", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("á");
+    expect(juego.palabraEnmascarada()).toBe("_ A _ _");
+  });
 });
