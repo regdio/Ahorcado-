@@ -170,9 +170,14 @@ describe("HU-06 dibujo progresivo", () => {
 });
 
 
-  describe("HU-12 palabra al azar", () => {
-    it("elige la primera palabra si el azar es 0", () => {
+describe("HU-12 palabra al azar", () => {
+  it("elige la primera palabra si el azar es 0", () => {
       const palabra = elegirPalabra(["MANZANA", "PERRO", "CASA"], () => 0);
       expect(palabra).toBe("MANZANA");
-    });
   });
+  
+  it("elige la palabra según el azar", () => {
+    const palabra = elegirPalabra(["MANZANA", "PERRO", "CASA"], () => 0.9);
+    expect(palabra).toBe("CASA");
+  });
+});
