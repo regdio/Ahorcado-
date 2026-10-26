@@ -113,6 +113,17 @@ Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error p
     - cuenta cada error
   - Estado: en progreso
 
+### HU-12 — Palabra al azar (extra)
+Como jugador, quiero recibir una palabra al azar de una lista para que cada partida sea distinta.
+
+- CA-1: Si la URL no trae palabra, se elige una al azar de una lista.
+  - AT: `features/palabra-al-azar.feature` (@HU-12 @CA-1)
+  - UTs:
+    - elige la primera palabra si el azar es 0
+    - elige la palabra según el azar
+  - Estado: en progreso
+  - Seam: la función que elige recibe el azar como parámetro; en el AT se fija con `?azar=`.
+
 ## Notas del proceso
 - El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
