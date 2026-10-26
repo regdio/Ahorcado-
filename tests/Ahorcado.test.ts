@@ -1,3 +1,4 @@
+import { elegirPalabra } from "../src/domain/palabras";
 import { describe, it, expect } from "vitest";
 import { Ahorcado } from "../src/domain/Ahorcado";
 
@@ -167,3 +168,11 @@ describe("HU-06 dibujo progresivo", () => {
     expect(juego.errores()).toBe(3);
   });
 });
+
+
+  describe("HU-12 palabra al azar", () => {
+    it("elige la primera palabra si el azar es 0", () => {
+      const palabra = elegirPalabra(["MANZANA", "PERRO", "CASA"], () => 0);
+      expect(palabra).toBe("MANZANA");
+    });
+  });
