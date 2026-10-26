@@ -20,6 +20,11 @@ export class Ahorcado {
     this.letrasAdivinadas.push(letra.toUpperCase());
   }
 
+  
+  esLetraValida(letra: string): boolean {
+    return true;
+  }
+
   palabraEnmascarada(): string {
     if (this.perdio()) {
       return this.letrasDeLaPalabra().join(" ");

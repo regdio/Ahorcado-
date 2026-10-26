@@ -41,6 +41,11 @@ describe("HU-03 adivinar letras", () => {
     juego.adivinar("A");
     expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
+  
+  it("reconoce si la entrada no es una letra", () => {
+    const juego = new Ahorcado("GATO");
+    expect(juego.esLetraValida("1")).toBe(false);
+  });
 });
 
 describe("HU-05 contar errores", () => {
