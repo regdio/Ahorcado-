@@ -7,15 +7,16 @@
 - Análisis estático (SonarQube Cloud): https://sonarcloud.io/dashboard?id=regdio_Ahorcado
 - Story Map: https://docs.google.com/document/d/11kgPLtHq3AV14IZ7cBIxkqOzxiKo0OYSa1oxiUObCxQ/edit?tab=t.0#heading=h.l6yg4fw508jh
 
+### Evidencia de que el pipeline corta
 - AT roto a propósito (rama `prueba-ci`): https://github.com/regdio/Ahorcado-/actions/runs/38485807321
 - Quality gate de Sonar con un bug a propósito (rama `prueba-sonar`): https://github.com/regdio/Ahorcado-/actions/runs/39527447595
 ## Trazabilidad
 
 ### HU-01 — Iniciar partida
-Como jugador, quiero iniciar una nueva partida para empezar a jugar.
+Como jugador, quiero iniciar una nueva partida para saber cuántas letras tiene la palabra que tengo que adivinar.
 
 - CA-1: Al abrir la aplicación se ve la palabra oculta con guiones y 6 vidas.
-  - AT: `features/iniciar-partida.feature` (@HU-01 @CA-1)
+  - AT: `features/iniciar-partida.feature` (@HU-01 @CA-1), esquema del escenario con GATO y PERRO
   - UTs:
     - inicializa con la palabra oculta
     - arranca con 6 vidas
@@ -42,6 +43,9 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
     - la palabra en minúscula también se revela
   - Estado: Done
  
+- CA-3: Si se ingresa algo que no es una letra, se informa y no se pierden vidas.
+  - Estado: Pendiente
+
 ### HU-05 — Contar errores
 Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidades me quedan.
 
@@ -76,3 +80,9 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
   - Estado: en progreso
 - CA-3: Con la partida terminada no se pueden ingresar más letras.
   - Estado: Pendiente
+
+
+## Notas del proceso
+- Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
+- La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
+- En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
