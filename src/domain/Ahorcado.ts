@@ -23,12 +23,12 @@ export class Ahorcado {
   adivinar(letra: string): void {
     if (this.gano() || this.perdio()) return;
     if (!this.esLetraValida(letra)) return;
-    this.letrasAdivinadas.push(letra.toUpperCase());
+    this.letrasAdivinadas.push(this.normalizar(letra));
   }
 
   
   esLetraValida(letra: string): boolean {
-    return /^[A-ZÑ]$/i.test(letra);
+    return /^[A-ZÁÉÍÓÚÜÑ]$/i.test(letra);
   }
 
   palabraEnmascarada(): string {

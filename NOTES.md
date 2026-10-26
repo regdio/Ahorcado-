@@ -136,7 +136,7 @@ Como jugador, quiero que las letras con tilde cuenten como su vocal sin tilde, p
     - una vocal no descuenta vidas si la palabra la tiene con tilde
     - se gana adivinando las vocales sin tilde
     - escribir una vocal con tilde cuenta como la vocal
-  - Estado: en progreso
+  - Estado: Done
   - Nota: con 100% de coverage este bug existía igual; aparece recién al pensar el caso de los acentos.
 
 ## Notas del proceso
