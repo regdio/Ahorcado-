@@ -14,6 +14,12 @@ export class Ahorcado {
     return this.palabra.split("");
   }
 
+  
+  private normalizar(texto: string): string {
+    const sinTilde: Record<string, string> = { Á: "A", É: "E", Í: "I", Ó: "O", Ú: "U", Ü: "U" };
+    return texto.toUpperCase().replace(/[ÁÉÍÓÚÜ]/g, (c) => sinTilde[c]);
+  }
+
   adivinar(letra: string): void {
     if (this.gano() || this.perdio()) return;
     if (!this.esLetraValida(letra)) return;
@@ -30,7 +36,7 @@ export class Ahorcado {
       return this.letrasDeLaPalabra().join(" ");
     }
     return this.letrasDeLaPalabra()
-      .map((l) => (this.letrasAdivinadas.includes(l) ? l : "_"))
+      .map((l) => (this.letrasAdivinadas.includes(this.normalizar(l)) ? l : "_"))
       .join(" ");
   }
 
