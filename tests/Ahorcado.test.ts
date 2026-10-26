@@ -195,4 +195,10 @@ describe("HU-18 acentos", () => {
     juego.adivinar("O");
     expect(juego.vidas()).toBe(6);
   });
+  
+  it("se gana adivinando las vocales sin tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    ["C", "A", "M", "I", "O", "N"].forEach((l) => juego.adivinar(l));
+    expect(juego.gano()).toBe(true);
+  });
 });
