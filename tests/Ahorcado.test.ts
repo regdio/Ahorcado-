@@ -150,6 +150,13 @@ describe("HU-09 jugar de nuevo", () => {
     juego.reiniciar();
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
   });
+
+  
+  it("reiniciar con una palabra nueva la usa", () => {
+    const juego = new Ahorcado("GATO");
+    juego.reiniciar("PERRO");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ _");
+  });
 });
 
 

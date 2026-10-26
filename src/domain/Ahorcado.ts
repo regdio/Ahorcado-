@@ -55,8 +55,7 @@ export class Ahorcado {
     return this.gano() || this.perdio();
   }
 
-  
-  reiniciar(): void {
+  reiniciar(nuevaPalabra?: string): void {
     this.letrasAdivinadas = [];
   }
 }
