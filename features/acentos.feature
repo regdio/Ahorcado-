@@ -10,5 +10,5 @@ Característica: Acentos
     Dado una partida con la palabra "CAMIÓN"
     Cuando el jugador adivina la letra "O"
     Y el jugador adivina la letra "í"
-    Entonces se ve la palabra "_ _ _ Í Ó _"
+    Entonces se ve la palabra "_ _ _ I Ó _"
     Y se ven 6 vidas
