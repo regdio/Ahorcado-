@@ -27,6 +27,11 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
 
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
+      if (!juego.esLetraValida(input.value)) {
+        input.value = "";
+        mensaje.textContent = "Ingresá una letra";
+        return;
+      }
       juego.adivinar(input.value);
       input.value = "";
       render();

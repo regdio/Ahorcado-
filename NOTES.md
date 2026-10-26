@@ -49,7 +49,7 @@ Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
     - un número no descuenta vidas
     - un símbolo no descuenta vidas
     - reconoce si la entrada no es una letra
-  - Estado: en progreso
+  - Estado: Done
 
 ### HU-05 — Contar errores
 Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidades me quedan.
