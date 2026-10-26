@@ -33,7 +33,7 @@ export class Ahorcado {
   }
   
   gano(): boolean {
-    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));;
+    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));
   }
   
   perdio(): boolean {

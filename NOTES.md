@@ -77,12 +77,13 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
     - pierde al quedarse sin vidas
     - no pierde si le quedan vidas
     - al perder se revela la palabra
-  - Estado: en progreso
+  - Estado: Done
 - CA-3: Con la partida terminada no se pueden ingresar más letras.
   - Estado: Pendiente
 
 
 ## Notas del proceso
+- El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
 - La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
 - En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
