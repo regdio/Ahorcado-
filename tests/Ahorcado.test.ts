@@ -158,4 +158,12 @@ describe("HU-06 dibujo progresivo", () => {
     juego.adivinar("E");
     expect(juego.errores()).toBe(1);
   });
+  
+  it("cuenta cada error", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("E");
+    juego.adivinar("I");
+    juego.adivinar("U");
+    expect(juego.errores()).toBe(3);
+  });
 });
