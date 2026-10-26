@@ -189,4 +189,10 @@ describe("HU-18 acentos", () => {
     juego.adivinar("O");
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _ Ó _");
   });
+  
+  it("una vocal no descuenta vidas si la palabra la tiene con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.vidas()).toBe(6);
+  });
 });
