@@ -91,6 +91,17 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
   - Estado: Done
 
 
+### HU-09 — Jugar de nuevo (extra)
+Como jugador, quiero iniciar una nueva partida después de terminar una para seguir jugando sin recargar la página.
+
+- CA-1: Al terminar la partida aparece la opción de jugar de nuevo, que reinicia la palabra y las vidas.
+  - AT: `features/jugar-de-nuevo.feature` (@HU-09 @CA-1)
+  - UTs:
+    - la partida termina al ganar
+    - la partida no termina mientras se juega
+    - reiniciar vuelve a empezar la partida
+  - Estado: en progreso
+  
 ## Notas del proceso
 - El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
