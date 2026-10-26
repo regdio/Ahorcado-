@@ -41,7 +41,7 @@ export class Ahorcado {
   
   
   errores(): number {
-    return 1;
+    return this.letrasAdivinadas.filter((l) => !this.palabra.includes(l)).length;
   }
 
   gano(): boolean {
