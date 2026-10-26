@@ -108,3 +108,11 @@ describe("HU-08 CA-3 partida terminada", () => {
     expect(juego.vidas()).toBe(0);
   });
 });
+
+describe("HU-03 CA-3 entrada inválida", () => {
+  it("un número no descuenta vidas", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("1");
+    expect(juego.vidas()).toBe(6);
+  });
+});
