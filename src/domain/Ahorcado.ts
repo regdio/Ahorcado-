@@ -15,7 +15,7 @@ export class Ahorcado {
   }
 
   adivinar(letra: string): void {
-    if (this.gano()) return;
+    if (this.gano() || this.perdio()) return;
     this.letrasAdivinadas.push(letra.toUpperCase());
   }
 

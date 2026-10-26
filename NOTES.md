@@ -83,7 +83,7 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
   - UTs:
     - no se puede adivinar después de ganar
     - no se puede adivinar después de perder
-  - Estado: en progreso
+  - Estado: Done
 
 
 ## Notas del proceso
