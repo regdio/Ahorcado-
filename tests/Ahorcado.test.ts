@@ -135,4 +135,10 @@ describe("HU-09 jugar de nuevo", () => {
     ["G", "A", "T", "O"].forEach((l) => juego.adivinar(l));
     expect(juego.terminada()).toBe(true);
   });
+  
+  it("la partida no termina mientras se juega", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("G");
+    expect(juego.terminada()).toBe(false);
+  });
 });
