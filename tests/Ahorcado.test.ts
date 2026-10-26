@@ -127,3 +127,12 @@ describe("HU-03 CA-3 entrada inválida", () => {
     expect(juego.vidas()).toBe(6);
   });
 });
+
+
+describe("HU-09 jugar de nuevo", () => {
+  it("la partida termina al ganar", () => {
+    const juego = new Ahorcado("GATO");
+    ["G", "A", "T", "O"].forEach((l) => juego.adivinar(l));
+    expect(juego.terminada()).toBe(true);
+  });
+});

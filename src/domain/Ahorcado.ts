@@ -46,4 +46,8 @@ export class Ahorcado {
   perdio(): boolean {
     return this.vidas() <= 0;
   }
+  
+  terminada(): boolean {
+    return false;
+  }
 }
