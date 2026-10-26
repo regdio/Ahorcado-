@@ -37,3 +37,7 @@ Then("se ven {int} partes del ahorcado", async ({ page }, partes: number) => {
   await expect(
     page.locator('[data-testid="parte"]:not([style*="display: none"])')).toHaveCount(partes);
 });
+
+Then("no se pueden escribir más letras", async ({ page }) => {
+  await expect(page.getByRole("textbox")).toBeDisabled();
+});
