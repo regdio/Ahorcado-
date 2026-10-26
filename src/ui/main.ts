@@ -39,6 +39,7 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
       mensaje.textContent = "";
     }
     botonJugarDeNuevo.hidden = !juego.terminada();
+    input.disabled = juego.terminada();
     partes.forEach((parte, i) => {
       parte.style.display = i < juego.errores() ? "" : "none";
     });
