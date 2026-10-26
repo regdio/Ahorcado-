@@ -30,5 +30,6 @@ Then("se ve el mensaje {string}", async ({ page }, mensaje: string) => {
 });
 
 Then("se ven {int} partes del ahorcado", async ({ page }, partes: number) => {
-  await expect(page.locator('[data-testid="parte"]:visible')).toHaveCount(partes);
+  await expect(
+    page.locator('[data-testid="parte"]:not([style*="display: none"])')).toHaveCount(partes);
 });
