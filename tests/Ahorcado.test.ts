@@ -115,4 +115,10 @@ describe("HU-03 CA-3 entrada inválida", () => {
     juego.adivinar("1");
     expect(juego.vidas()).toBe(6);
   });
+  
+  it("un símbolo no descuenta vidas", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("?");
+    expect(juego.vidas()).toBe(6);
+  });
 });
