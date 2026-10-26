@@ -100,8 +100,8 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
     - la partida termina al ganar
     - la partida no termina mientras se juega
     - reiniciar vuelve a empezar la partida
-  - Estado: en progreso
-  
+  - Estado: Done
+
 ## Notas del proceso
 - El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".

@@ -6,12 +6,14 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
     <p>Vidas: <span data-testid="lives"></span></p>
     <input type="text" maxlength="1" aria-label="Letra" />
     <p data-testid="message"></p>
+    <button type="button" hidden>Jugar de nuevo</button>
   `;
 
   const palabra = root.querySelector<HTMLElement>('[data-testid="word"]')!;
   const vidas = root.querySelector<HTMLElement>('[data-testid="lives"]')!;
   const input = root.querySelector<HTMLInputElement>("input")!;
   const mensaje = root.querySelector<HTMLElement>('[data-testid="message"]')!;
+  const botonJugarDeNuevo = root.querySelector<HTMLButtonElement>("button")!;
 
   function render(): void {
     palabra.textContent = juego.palabraEnmascarada();
@@ -23,6 +25,7 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
     } else {
       mensaje.textContent = "";
     }
+    botonJugarDeNuevo.hidden = !juego.terminada();
   }
 
   input.addEventListener("keydown", (e) => {
@@ -37,6 +40,10 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
       render();
     }
   });
-
+  botonJugarDeNuevo.addEventListener("click", () => {
+    juego.reiniciar();
+    render();
+    input.focus();
+  });
   render();
 }
