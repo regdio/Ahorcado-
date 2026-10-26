@@ -50,7 +50,7 @@ export class Ahorcado {
   }
 
   gano(): boolean {
-    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));
+    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(this.normalizar(l)));
   }
   
   perdio(): boolean {
