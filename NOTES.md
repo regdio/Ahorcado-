@@ -101,7 +101,12 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
     - la partida no termina mientras se juega
     - reiniciar vuelve a empezar la partida
   - Estado: Done
-
+- CA-2: Al jugar de nuevo se usa una palabra distinta de la anterior.
+  - AT: `features/jugar-de-nuevo.feature` (@HU-09 @CA-2)
+  - UTs:
+    - reiniciar con una palabra nueva la usa
+    - elige otra palabra distinta de la anterior
+  - Estado: en progreso
 
 ### HU-06 — Dibujo progresivo del ahorcado (extra)
 Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
