@@ -141,4 +141,12 @@ describe("HU-09 jugar de nuevo", () => {
     juego.adivinar("G");
     expect(juego.terminada()).toBe(false);
   });
+
+  
+  it("reiniciar vuelve a empezar la partida", () => {
+    const juego = new Ahorcado("GATO");
+    ["G", "A", "T", "O"].forEach((l) => juego.adivinar(l));
+    juego.reiniciar();
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
+  });
 });

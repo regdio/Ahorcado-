@@ -50,4 +50,7 @@ export class Ahorcado {
   terminada(): boolean {
     return this.gano() || this.perdio();
   }
+
+  
+  reiniciar(): void {}
 }
