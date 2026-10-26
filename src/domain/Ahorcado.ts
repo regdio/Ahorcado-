@@ -48,6 +48,6 @@ export class Ahorcado {
   }
   
   terminada(): boolean {
-    return false;
+    return true;
   }
 }
