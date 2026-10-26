@@ -22,7 +22,7 @@ export class Ahorcado {
 
   
   esLetraValida(letra: string): boolean {
-    return true;
+    return /^[A-ZÑ]$/i.test(letra);
   }
 
   palabraEnmascarada(): string {
