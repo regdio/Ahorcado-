@@ -9,16 +9,20 @@ export class Ahorcado {
     this.palabra = palabra.toUpperCase();
   }
 
+  
+  private letrasDeLaPalabra(): string[] {
+    return this.palabra.split("");
+  }
+
   adivinar(letra: string): void {
     this.letrasAdivinadas.push(letra.toUpperCase());
   }
 
   palabraEnmascarada(): string {
     if (this.perdio()) {
-      return this.palabra.split("").join(" ");
+      return this.letrasDeLaPalabra().join(" ");
     }
-    return this.palabra
-      .split("")
+    return this.letrasDeLaPalabra()
       .map((l) => (this.letrasAdivinadas.includes(l) ? l : "_"))
       .join(" ");
   }
@@ -29,7 +33,7 @@ export class Ahorcado {
   }
   
   gano(): boolean {
-    return this.palabra.split("").every((l) => this.letrasAdivinadas.includes(l));
+    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));;
   }
   
   perdio(): boolean {
