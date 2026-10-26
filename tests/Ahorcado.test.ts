@@ -93,3 +93,11 @@ describe("HU-08 perder la partida", () => {
   });
 });
 
+describe("HU-08 CA-3 partida terminada", () => {
+  it("no se puede adivinar después de ganar", () => {
+    const juego = new Ahorcado("GATO");
+    ["G", "A", "T", "O"].forEach((l) => juego.adivinar(l));
+    juego.adivinar("E");
+    expect(juego.vidas()).toBe(6);
+  });
+});
