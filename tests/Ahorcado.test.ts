@@ -181,3 +181,12 @@ describe("HU-12 palabra al azar", () => {
     expect(palabra).toBe("CASA");
   });
 });
+
+
+describe("HU-18 acentos", () => {
+  it("una vocal revela su versión con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ Ó _");
+  });
+});
