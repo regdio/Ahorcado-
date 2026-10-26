@@ -100,4 +100,11 @@ describe("HU-08 CA-3 partida terminada", () => {
     juego.adivinar("E");
     expect(juego.vidas()).toBe(6);
   });
+
+  it("no se puede adivinar después de perder", () => {
+    const juego = new Ahorcado("GATO");
+    ["B", "C", "D", "E", "F", "H"].forEach((l) => juego.adivinar(l));
+    juego.adivinar("Z");
+    expect(juego.vidas()).toBe(0);
+  });
 });
