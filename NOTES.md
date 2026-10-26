@@ -79,7 +79,7 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
     - al perder se revela la palabra
   - Estado: en progreso
 - CA-3: Con la partida terminada no se pueden ingresar más letras.
-  - Estado: Pendiente
+  - Estado: Done
 
 
 ## Notas del proceso
