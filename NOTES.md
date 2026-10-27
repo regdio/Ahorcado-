@@ -106,7 +106,7 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
   - UTs:
     - reiniciar con una palabra nueva la usa
     - elige otra palabra distinta de la anterior
-  - Estado: en progreso
+  - Estado: Done
 
 ### HU-06 — Dibujo progresivo del ahorcado (extra)
 Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.

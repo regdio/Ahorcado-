@@ -1,6 +1,6 @@
 import { Ahorcado } from "../domain/Ahorcado";
 
-export function mountApp(root: HTMLElement, juego: Ahorcado): void {
+export function mountApp(root: HTMLElement, juego: Ahorcado, nuevaPalabra: () => string): void {
   root.innerHTML = `
     <svg width="120" height="150" viewBox="0 0 120 150" stroke="currentColor" stroke-width="4" fill="none">
       <line x1="10" y1="140" x2="110" y2="140" />
@@ -58,7 +58,7 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
     }
   });
   botonJugarDeNuevo.addEventListener("click", () => {
-    juego.reiniciar();
+    juego.reiniciar(nuevaPalabra());
     render();
     input.focus();
   });
