@@ -1,4 +1,4 @@
-import { elegirPalabra } from "../src/domain/palabras";
+import { elegirPalabra, elegirOtraPalabra } from "../src/domain/palabras";
 import { describe, it, expect } from "vitest";
 import { Ahorcado } from "../src/domain/Ahorcado";
 
@@ -186,5 +186,11 @@ describe("HU-12 palabra al azar", () => {
   it("elige la palabra según el azar", () => {
     const palabra = elegirPalabra(["MANZANA", "PERRO", "CASA"], () => 0.9);
     expect(palabra).toBe("CASA");
+  });
+
+  
+  it("elige otra palabra distinta de la anterior", () => {
+    const palabra = elegirOtraPalabra(["MANZANA", "PERRO", "CASA"], "MANZANA", () => 0);
+    expect(palabra).toBe("PERRO");
   });
 });
