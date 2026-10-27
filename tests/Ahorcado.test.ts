@@ -194,3 +194,30 @@ describe("HU-12 palabra al azar", () => {
     expect(palabra).toBe("PERRO");
   });
 });
+
+
+describe("HU-18 acentos", () => {
+  it("una vocal revela su versión con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ Ó _");
+  });
+  
+  it("una vocal no descuenta vidas si la palabra la tiene con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.vidas()).toBe(6);
+  });
+  
+  it("se gana adivinando las vocales sin tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    ["C", "A", "M", "I", "O", "N"].forEach((l) => juego.adivinar(l));
+    expect(juego.gano()).toBe(true);
+  });
+  
+  it("escribir una vocal con tilde cuenta como la vocal", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("á");
+    expect(juego.palabraEnmascarada()).toBe("_ A _ _");
+  });
+});
