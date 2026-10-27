@@ -1,230 +1,335 @@
+/* Ahorcado: una hoja de cuaderno escolar, como cuando se juega en papel. */
+
 :root {
-    --escritorio: #d7e0ea;
-    --papel: #fbfcfe;
-    --renglon: #c9dbee;
-    --margen: #e05a5a;
-    --grafito: #2b3038;
-    --birome: #1f4fa6;
-    --aviso: #7a5b12;
-  
-    --renglon-alto: 2rem;
-    --letra-mano: "Kalam", "Comic Sans MS", "Segoe Print", cursive;
-    --letra-texto: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --escritorio: #d7e0ea;
+  --papel: #fbfcfe;
+  --renglon: #c9dbee;
+  --margen: #e05a5a;
+  --grafito: #2b3038;
+  --birome: #1f4fa6;
+  --aviso: #7a5b12;
+
+  --renglon-alto: 2rem;
+  --letra-mano: "Kalam", "Comic Sans MS", "Segoe Print", cursive;
+  --letra-texto: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--escritorio);
+  color: var(--grafito);
+  font-family: var(--letra-texto);
+  font-size: 1.0625rem;
+  line-height: var(--renglon-alto);
+}
+
+/* La hoja: renglones celestes y el margen rojo a la izquierda. */
+.hoja {
+  position: relative;
+  width: min(100%, 52rem);
+  padding: var(--renglon-alto) 1.5rem calc(var(--renglon-alto) * 1.5) 4.5rem;
+  background-color: var(--papel);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--renglon-alto) - 1px),
+    var(--renglon) calc(var(--renglon-alto) - 1px),
+    var(--renglon) var(--renglon-alto)
+  );
+  border-radius: 4px;
+  box-shadow:
+    0 1px 2px rgb(30 45 70 / 18%),
+    0 14px 32px rgb(30 45 70 / 16%);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3.25rem;
+  width: 2px;
+  background: var(--margen);
+  opacity: 0.75;
+}
+
+.titulo {
+  margin: 0 0 var(--renglon-alto);
+  font-family: var(--letra-mano);
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: calc(var(--renglon-alto) * 2);
+  color: var(--birome);
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+
+.juego {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  grid-template-areas:
+    "dibujo tablero"
+    "comentario tablero";
+  column-gap: 2rem;
+  align-items: start;
+}
+
+/* Cada parte tiene su lugar fijo en la grilla, haya o no un figure alrededor. */
+.escena {
+  display: contents;
+}
+
+.dibujo {
+  grid-area: dibujo;
+}
+
+.comentario {
+  grid-area: comentario;
+}
+
+.tablero {
+  grid-area: tablero;
+}
+
+/* El dibujo: la horca en grafito y el muñeco en birome. */
+.dibujo {
+  width: 100%;
+  height: auto;
+  stroke: var(--grafito);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.dibujo [data-testid="parte"] {
+  stroke: var(--birome);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: trazar 0.45s ease-out;
+}
+
+@keyframes trazar {
+  from {
+    stroke-dashoffset: 1;
   }
-  
-  * {
-    box-sizing: border-box;
+}
+
+/* Las caras: ojos en X al perder, el muñeco que se escapa al ganar. */
+.dibujo .ojos-x {
+  stroke: var(--margen);
+  stroke-width: 2;
+}
+
+.dibujo .salvado {
+  stroke: var(--birome);
+  animation: saltito 0.6s ease-out 2;
+  transform-origin: 138px 138px;
+}
+
+@keyframes saltito {
+  50% {
+    transform: translateY(-6px);
   }
-  
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 1rem;
-    background: var(--escritorio);
-    color: var(--grafito);
-    font-family: var(--letra-texto);
-    font-size: 1.0625rem;
-    line-height: var(--renglon-alto);
+}
+
+.escena {
+  margin: 0;
+}
+
+/* El comentario del dibujante: anotado a mano, al margen. */
+.comentario {
+  min-height: calc(var(--renglon-alto) * 2);
+  margin: 0.5rem 0 0;
+  font-family: var(--letra-mano);
+  font-size: 1.05rem;
+  line-height: var(--renglon-alto);
+  color: var(--birome);
+  transform: rotate(-1.5deg);
+}
+
+.tablero {
+  min-width: 0;
+}
+
+.palabra {
+  margin: 0 0 var(--renglon-alto);
+  font-family: var(--letra-mano);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+  line-height: calc(var(--renglon-alto) * 2);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.vidas {
+  margin: 0;
+}
+
+.vidas span {
+  font-family: var(--letra-mano);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--birome);
+}
+
+.vidas .corazones {
+  margin-left: 0.5rem;
+  font-family: var(--letra-texto);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  color: var(--margen);
+}
+
+.campo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: var(--renglon-alto) 0 0;
+}
+
+.campo input {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 2px solid var(--grafito);
+  border-radius: 6px;
+  background: var(--papel);
+  color: var(--birome);
+  font-family: var(--letra-mano);
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.campo input:disabled {
+  border-style: dashed;
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.campo input:focus-visible {
+  outline: 3px solid var(--birome);
+  outline-offset: 3px;
+}
+
+.mensaje {
+  min-height: calc(var(--renglon-alto) * 2);
+  margin: var(--renglon-alto) 0 0;
+  font-family: var(--letra-mano);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: calc(var(--renglon-alto) * 2);
+}
+
+.mensaje[data-tono="gano"] {
+  color: var(--birome);
+  animation: festejo 0.5s ease-out;
+}
+
+.mensaje[data-tono="perdio"] {
+  color: var(--margen);
+  animation: temblor 0.4s ease-in-out;
+}
+
+@keyframes festejo {
+  from {
+    transform: scale(0.6) rotate(-6deg);
   }
-  
+  70% {
+    transform: scale(1.12) rotate(2deg);
+  }
+}
+
+@keyframes temblor {
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+.mensaje[data-tono="aviso"] {
+  color: var(--aviso);
+  font-family: var(--letra-texto);
+  font-weight: 400;
+  font-size: 1.0625rem;
+}
+
+.otra-vez {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--birome);
+  color: var(--papel);
+  font-family: var(--letra-texto);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  cursor: pointer;
+}
+
+.otra-vez:hover {
+  background: #183f86;
+}
+
+.otra-vez:focus-visible {
+  outline: 3px solid var(--grafito);
+  outline-offset: 3px;
+}
+
+.otra-vez[hidden] {
+  display: none;
+}
+
+@media (max-width: 34rem) {
   .hoja {
-    position: relative;
-    width: min(100%, 46rem);
-    padding: var(--renglon-alto) 1.5rem calc(var(--renglon-alto) * 1.5) 4.5rem;
-    background-color: var(--papel);
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent calc(var(--renglon-alto) - 1px),
-      var(--renglon) calc(var(--renglon-alto) - 1px),
-      var(--renglon) var(--renglon-alto)
-    );
-    border-radius: 4px;
-    box-shadow:
-      0 1px 2px rgb(30 45 70 / 18%),
-      0 14px 32px rgb(30 45 70 / 16%);
+    padding-left: 3rem;
   }
-  
+
   .hoja::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 3.25rem;
-    width: 2px;
-    background: var(--margen);
-    opacity: 0.75;
+    left: 2rem;
   }
-  
+
   .titulo {
-    margin: 0 0 var(--renglon-alto);
-    font-family: var(--letra-mano);
-    font-weight: 700;
-    font-size: 2.6rem;
-    line-height: calc(var(--renglon-alto) * 2);
-    color: var(--birome);
-    transform: rotate(-1.5deg);
-    transform-origin: left center;
+    font-size: 2.1rem;
   }
-  
+
   .juego {
-    display: grid;
-    grid-template-columns: 11rem 1fr;
-    gap: 2rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "dibujo"
+      "comentario"
+      "tablero";
+    row-gap: 0.5rem;
   }
-  
-  .dibujo {
-    width: 100%;
-    height: auto;
-    stroke: var(--grafito);
-    stroke-width: 4;
-    stroke-linecap: round;
-    fill: none;
-  }
-  
-  .dibujo [data-testid="parte"] {
-    stroke: var(--birome);
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0;
-    animation: trazar 0.45s ease-out;
-  }
-  
-  @keyframes trazar {
-    from {
-      stroke-dashoffset: 1;
-    }
-  }
-  
-  .tablero {
-    min-width: 0;
-  }
-  
+
   .palabra {
-    margin: 0 0 var(--renglon-alto);
-    font-family: var(--letra-mano);
-    font-weight: 700;
-    font-size: clamp(1.75rem, 6vw, 2.75rem);
-    line-height: calc(var(--renglon-alto) * 2);
-    letter-spacing: 0.12em;
-    overflow-wrap: anywhere;
+    font-size: clamp(1.25rem, 6.5vw, 1.75rem);
   }
-  
-  .vidas {
-    margin: 0;
+
+  .dibujo {
+    width: 10.5rem;
   }
-  
-  .vidas span {
-    font-family: var(--letra-mano);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--birome);
-  }
-  
-  .campo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: var(--renglon-alto) 0 0;
-  }
-  
-  .campo input {
-    width: 3.5rem;
-    height: 3.5rem;
-    padding: 0;
-    border: 2px solid var(--grafito);
-    border-radius: 6px;
-    background: var(--papel);
-    color: var(--birome);
-    font-family: var(--letra-mano);
-    font-weight: 700;
-    font-size: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
-  
-  .campo input:focus-visible {
-    outline: 3px solid var(--birome);
-    outline-offset: 3px;
-  }
-  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dibujo [data-testid="parte"],
+  .dibujo .salvado,
   .mensaje {
-    min-height: calc(var(--renglon-alto) * 2);
-    margin: var(--renglon-alto) 0 0;
-    font-family: var(--letra-mano);
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: calc(var(--renglon-alto) * 2);
+    animation: none !important;
   }
-  
-  .mensaje[data-tono="gano"] {
-    color: var(--birome);
-  }
-  
-  .mensaje[data-tono="perdio"] {
-    color: var(--margen);
-  }
-  
-  .mensaje[data-tono="aviso"] {
-    color: var(--aviso);
-    font-family: var(--letra-texto);
-    font-weight: 400;
-    font-size: 1.0625rem;
-  }
-  
-  .otra-vez {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    border: 0;
-    border-radius: 6px;
-    background: var(--birome);
-    color: var(--papel);
-    font-family: var(--letra-texto);
-    font-weight: 700;
-    font-size: 1.0625rem;
-    cursor: pointer;
-  }
-  
-  .otra-vez:hover {
-    background: #183f86;
-  }
-  
-  .otra-vez:focus-visible {
-    outline: 3px solid var(--grafito);
-    outline-offset: 3px;
-  }
-  
-  .otra-vez[hidden] {
-    display: none;
-  }
-  
-  @media (max-width: 34rem) {
-    .hoja {
-      padding-left: 3rem;
-    }
-  
-    .hoja::before {
-      left: 2rem;
-    }
-  
-    .titulo {
-      font-size: 2.1rem;
-    }
-  
-    .juego {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  
-    .dibujo {
-      width: 8.5rem;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .dibujo [data-testid="parte"] {
-      animation: none;
-    }
-  }
+}
