@@ -10,6 +10,7 @@
 ### Evidencia de que el pipeline corta
 - AT roto a propósito (rama `prueba-ci`): https://github.com/regdio/Ahorcado-/actions/runs/38485807321
 - Quality gate de Sonar con un bug a propósito (rama `prueba-sonar`): https://github.com/regdio/Ahorcado-/actions/runs/39527447595
+
 ## Trazabilidad
 
 ### HU-01 — Iniciar partida
@@ -25,6 +26,16 @@ Como jugador, quiero iniciar una nueva partida para saber cuántas letras tiene 
   
   - Nota: el commit `REFACTOR: HU-01 extraer constante` incluyó por error el cableado de la UI (`index.ts`, `main.ts`), que correspondía al `GREEN:` del AT. Lo dejamos en el historial y lo corregimos en el proceso: un refactor no agrega código.
 
+### HU-02 — Palabra de la partida
+Como jugador, quiero que la partida tenga una palabra para adivinar, para poder jugar.
+
+- CA-1: La palabra se puede fijar desde la URL (`?word=GATO`).
+  - AT: lo cubren todos los AT que abren la partida con `?word=` (por ejemplo `features/iniciar-partida.feature`, step "una partida con la palabra")
+  - Estado: Done
+- CA-2: Si la URL no trae palabra, se elige una al azar de la lista.
+  - AT: `features/palabra-al-azar.feature` (@HU-12 @CA-1)
+  - Estado: Done
+  - Nota: al principio la palabra por defecto era fija (GATO); con HU-12 pasó a elegirse al azar de la lista.
 
 ### HU-03 — Adivinar letras
 Como jugador, quiero ingresar una letra para ir descubriendo la palabra.
@@ -61,7 +72,7 @@ Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidade
     - cada fallo descuenta una vida
   - Estado: Done 
 
-### HU-06 — Dibujo progresivo del ahorcado (extra)
+### HU-06 — Dibujo progresivo del ahorcado
 Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
 
 - CA-1: Con cada error se muestra una parte más del muñeco (de 0 a 6).
@@ -101,7 +112,7 @@ Como jugador, quiero saber cuándo perdí y ver la palabra correcta para saber q
   - Estado: Done
 
 
-### HU-09 — Jugar de nuevo (extra)
+### HU-09 — Jugar de nuevo 
 Como jugador, quiero iniciar una nueva partida después de terminar una para seguir jugando sin recargar la página.
 
 - CA-1: Al terminar la partida aparece la opción de jugar de nuevo, que reinicia la palabra y las vidas.
@@ -150,5 +161,6 @@ Como jugador, quiero que las letras con tilde cuenten como su vocal sin tilde, p
 - La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
 - En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
 - En HU-09 CA-2, el commit `RED:` de `elegirOtraPalabra` se subió sin el test (solo el stub). Lo detectó el quality gate de Sonar por falta de coverage en el código nuevo, y agregamos el test en un commit `TEST:`.
-- La interfaz (estética de cuaderno, comentarios y animaciones) se hizo en la rama estilos con commits style:. Se mantuvieron los data-testid, así que los 15 AT siguieron pasando sin cambios.
-- Dependabot marcó vulnerabilidades en Vite y Vitest y en la acción de SonarQube: se actualizaron con commits chore: y ci:, y las alertas quedaron en 0.
+- La interfaz (estética de cuaderno, comentarios y animaciones) se hizo en la rama `estilos` con commits `style:`. Se mantuvieron los `data-testid`, así que los 15 AT siguieron pasando sin cambios.
+- Dependabot marcó vulnerabilidades en Vite y Vitest y en la acción de SonarQube: se actualizaron con commits `chore:`y `ci:`, y las alertas quedaron en 0.
+- HU-04 (ver las letras ya intentadas) quedó fuera del MVP. Por eso, si el jugador repite una letra equivocada, se le descuenta otra vida.
