@@ -134,3 +134,4 @@ Como jugador, quiero recibir una palabra al azar de una lista para que cada part
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
 - La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
 - En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
+- En HU-09 CA-2, el commit `RED:` de `elegirOtraPalabra` se subió sin el test (solo el stub). Lo detectó el quality gate de Sonar por falta de coverage en el código nuevo, y agregamos el test en un commit `TEST:`.
