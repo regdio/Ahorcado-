@@ -61,6 +61,16 @@ Como jugador, quiero que se cuenten mis errores para saber cuántas oportunidade
     - cada fallo descuenta una vida
   - Estado: Done 
 
+### HU-06 — Dibujo progresivo del ahorcado (extra)
+Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
+
+- CA-1: Con cada error se muestra una parte más del muñeco (de 0 a 6).
+  - AT: `features/dibujo.feature` (@HU-06 @CA-1)
+  - UTs:
+    - un error suma un error
+    - cuenta cada error
+  - Estado: Done
+
 ### HU-07 — Ganar la partida
 Como jugador, quiero saber cuándo gané al descubrir todas las letras para saber que terminé la partida con éxito.
 
@@ -108,16 +118,6 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
     - elige otra palabra distinta de la anterior
   - Estado: Done
 
-### HU-06 — Dibujo progresivo del ahorcado (extra)
-Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
-
-- CA-1: Con cada error se muestra una parte más del muñeco (de 0 a 6).
-  - AT: `features/dibujo.feature` (@HU-06 @CA-1)
-  - UTs:
-    - un error suma un error
-    - cuenta cada error
-  - Estado: en progreso
-
 ### HU-12 — Palabra al azar (extra)
 Como jugador, quiero recibir una palabra al azar de una lista para que cada partida sea distinta.
 
@@ -126,7 +126,7 @@ Como jugador, quiero recibir una palabra al azar de una lista para que cada part
   - UTs:
     - elige la primera palabra si el azar es 0
     - elige la palabra según el azar
-  - Estado: en progreso
+  - Estado: Done
   - Seam: la función que elige recibe el azar como parámetro; en el AT se fija con `?azar=`.
 
 
@@ -150,3 +150,5 @@ Como jugador, quiero que las letras con tilde cuenten como su vocal sin tilde, p
 - La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
 - En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
 - En HU-09 CA-2, el commit `RED:` de `elegirOtraPalabra` se subió sin el test (solo el stub). Lo detectó el quality gate de Sonar por falta de coverage en el código nuevo, y agregamos el test en un commit `TEST:`.
+- La interfaz (estética de cuaderno, comentarios y animaciones) se hizo en la rama estilos con commits style:. Se mantuvieron los data-testid, así que los 15 AT siguieron pasando sin cambios.
+- Dependabot marcó vulnerabilidades en Vite y Vitest y en la acción de SonarQube: se actualizaron con commits chore: y ci:, y las alertas quedaron en 0.
