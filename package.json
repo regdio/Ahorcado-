@@ -20,7 +20,7 @@
     "@vitest/coverage-v8": "^2.1.0",
     "playwright-bdd": "^9.2.1",
     "typescript": "^7.0.2",
-    "vite": "^8.3.1",
+    "vite": "^8.3.3",
     "vitest": "^2.1.0"
   }
 }
