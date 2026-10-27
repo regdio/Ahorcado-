@@ -16,3 +16,15 @@ Característica: Jugar de nuevo
     Entonces se ve la palabra "_ _ _ _"
     Y se ven 6 vidas
     Y se ve el mensaje ""
+
+  @CA-2
+  Escenario: Al jugar de nuevo se usa otra palabra
+    Dado una partida con el azar "0"
+    Cuando el jugador adivina la letra "B"
+    Y el jugador adivina la letra "C"
+    Y el jugador adivina la letra "D"
+    Y el jugador adivina la letra "E"
+    Y el jugador adivina la letra "F"
+    Y el jugador adivina la letra "G"
+    Y el jugador toca "Jugar de nuevo"
+    Entonces se ve la palabra "_ _ _ _ _"

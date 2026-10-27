@@ -101,7 +101,12 @@ Como jugador, quiero iniciar una nueva partida después de terminar una para seg
     - la partida no termina mientras se juega
     - reiniciar vuelve a empezar la partida
   - Estado: Done
-
+- CA-2: Al jugar de nuevo se usa una palabra distinta de la anterior.
+  - AT: `features/jugar-de-nuevo.feature` (@HU-09 @CA-2)
+  - UTs:
+    - reiniciar con una palabra nueva la usa
+    - elige otra palabra distinta de la anterior
+  - Estado: Done
 
 ### HU-06 — Dibujo progresivo del ahorcado (extra)
 Como jugador, quiero que el ahorcado avance visualmente cuando cometo un error para ver qué tan cerca estoy de perder.
@@ -124,8 +129,24 @@ Como jugador, quiero recibir una palabra al azar de una lista para que cada part
   - Estado: en progreso
   - Seam: la función que elige recibe el azar como parámetro; en el AT se fija con `?azar=`.
 
+
+### HU-18 — Acentos (extra)
+Como jugador, quiero que las letras con tilde cuenten como su vocal sin tilde, para no perder vidas por los acentos.
+
+- CA-1: Adivinar una vocal revela también sus versiones con tilde y no descuenta vidas.
+- CA-2: Escribir una vocal con tilde cuenta como la vocal.
+  - AT: `features/acentos.feature` (@HU-18 @CA-1 @CA-2)
+  - UTs:
+    - una vocal revela su versión con tilde
+    - una vocal no descuenta vidas si la palabra la tiene con tilde
+    - se gana adivinando las vocales sin tilde
+    - escribir una vocal con tilde cuenta como la vocal
+  - Estado: Done
+  - Nota: con 100% de coverage este bug existía igual; aparece recién al pensar el caso de los acentos.
+
 ## Notas del proceso
 - El commit 909e6ae se subió con un mensaje equivocado (decía `GREEN:` pero era un arreglo de formato y marcaba el CA-3 de HU-08 como terminado). Lo revertimos y rehicimos el arreglo con el prefijo correcto.
 - Desde HU-07, cuando un test usa un método que todavía no existe, se agrega primero vacío, para que el rojo sea por el `expect` y no por "is not a function".
 - La UI está excluida del coverage (en Vitest y en Sonar) porque se cubre con los Acceptance Tests, como pide la consigna.
 - En HU-05 el `describe` de un test quedó anidado dentro del de otra historia; lo corregimos con un `REFACTOR:`.
+- En HU-09 CA-2, el commit `RED:` de `elegirOtraPalabra` se subió sin el test (solo el stub). Lo detectó el quality gate de Sonar por falta de coverage en el código nuevo, y agregamos el test en un commit `TEST:`.

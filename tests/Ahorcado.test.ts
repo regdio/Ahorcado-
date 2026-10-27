@@ -1,4 +1,4 @@
-import { elegirPalabra } from "../src/domain/palabras";
+import { elegirPalabra, elegirOtraPalabra } from "../src/domain/palabras";
 import { describe, it, expect } from "vitest";
 import { Ahorcado } from "../src/domain/Ahorcado";
 
@@ -150,6 +150,13 @@ describe("HU-09 jugar de nuevo", () => {
     juego.reiniciar();
     expect(juego.palabraEnmascarada()).toBe("_ _ _ _");
   });
+
+  
+  it("reiniciar con una palabra nueva la usa", () => {
+    const juego = new Ahorcado("GATO");
+    juego.reiniciar("PERRO");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ _");
+  });
 });
 
 
@@ -179,5 +186,38 @@ describe("HU-12 palabra al azar", () => {
   it("elige la palabra según el azar", () => {
     const palabra = elegirPalabra(["MANZANA", "PERRO", "CASA"], () => 0.9);
     expect(palabra).toBe("CASA");
+  });
+
+  
+  it("elige otra palabra distinta de la anterior", () => {
+    const palabra = elegirOtraPalabra(["MANZANA", "PERRO", "CASA"], "MANZANA", () => 0);
+    expect(palabra).toBe("PERRO");
+  });
+});
+
+
+describe("HU-18 acentos", () => {
+  it("una vocal revela su versión con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.palabraEnmascarada()).toBe("_ _ _ _ Ó _");
+  });
+  
+  it("una vocal no descuenta vidas si la palabra la tiene con tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    juego.adivinar("O");
+    expect(juego.vidas()).toBe(6);
+  });
+  
+  it("se gana adivinando las vocales sin tilde", () => {
+    const juego = new Ahorcado("CAMIÓN");
+    ["C", "A", "M", "I", "O", "N"].forEach((l) => juego.adivinar(l));
+    expect(juego.gano()).toBe(true);
+  });
+  
+  it("escribir una vocal con tilde cuenta como la vocal", () => {
+    const juego = new Ahorcado("GATO");
+    juego.adivinar("á");
+    expect(juego.palabraEnmascarada()).toBe("_ A _ _");
   });
 });

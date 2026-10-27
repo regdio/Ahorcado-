@@ -14,15 +14,21 @@ export class Ahorcado {
     return this.palabra.split("");
   }
 
+  
+  private normalizar(texto: string): string {
+    const sinTilde: Record<string, string> = { Á: "A", É: "E", Í: "I", Ó: "O", Ú: "U", Ü: "U" };
+    return texto.toUpperCase().replace(/[ÁÉÍÓÚÜ]/g, (c) => sinTilde[c]);
+  }
+
   adivinar(letra: string): void {
     if (this.gano() || this.perdio()) return;
     if (!this.esLetraValida(letra)) return;
-    this.letrasAdivinadas.push(letra.toUpperCase());
+    this.letrasAdivinadas.push(this.normalizar(letra));
   }
 
   
   esLetraValida(letra: string): boolean {
-    return /^[A-ZÑ]$/i.test(letra);
+    return /^[A-ZÁÉÍÓÚÜÑ]$/i.test(letra);
   }
 
   palabraEnmascarada(): string {
@@ -30,7 +36,7 @@ export class Ahorcado {
       return this.letrasDeLaPalabra().join(" ");
     }
     return this.letrasDeLaPalabra()
-      .map((l) => (this.letrasAdivinadas.includes(l) ? l : "_"))
+      .map((l) => (this.letrasAdivinadas.includes(this.normalizar(l)) ? l : "_"))
       .join(" ");
   }
 
@@ -40,11 +46,11 @@ export class Ahorcado {
   
   
   errores(): number {
-    return this.letrasAdivinadas.filter((l) => !this.palabra.includes(l)).length;
+    return this.letrasAdivinadas.filter((l) => !this.normalizar(this.palabra).includes(l)).length;
   }
 
   gano(): boolean {
-    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(l));
+    return this.letrasDeLaPalabra().every((l) => this.letrasAdivinadas.includes(this.normalizar(l)));
   }
   
   perdio(): boolean {
@@ -55,8 +61,10 @@ export class Ahorcado {
     return this.gano() || this.perdio();
   }
 
-  
-  reiniciar(): void {
+  reiniciar(nuevaPalabra?: string): void {
     this.letrasAdivinadas = [];
+    if (nuevaPalabra !== undefined) {
+      this.palabra = nuevaPalabra.toUpperCase();
+    }
   }
 }

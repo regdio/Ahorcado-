@@ -1,6 +1,6 @@
 import { Ahorcado } from "../domain/Ahorcado";
 
-export function mountApp(root: HTMLElement, juego: Ahorcado): void {
+export function mountApp(root: HTMLElement, juego: Ahorcado, nuevaPalabra: () => string): void {
   root.innerHTML = `
   <main class="hoja">
   <h1 class="titulo">Ahorcado</h1>
@@ -49,6 +49,7 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
       mensaje.textContent = "";
     }
     botonJugarDeNuevo.hidden = !juego.terminada();
+    input.disabled = juego.terminada();
     partes.forEach((parte, i) => {
       parte.style.display = i < juego.errores() ? "" : "none";
     });
@@ -68,7 +69,7 @@ export function mountApp(root: HTMLElement, juego: Ahorcado): void {
     }
   });
   botonJugarDeNuevo.addEventListener("click", () => {
-    juego.reiniciar();
+    juego.reiniciar(nuevaPalabra());
     render();
     input.focus();
   });
